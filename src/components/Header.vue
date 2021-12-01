@@ -34,10 +34,12 @@ export default {
   },
 
   methods:{
-    searchFilm(text){
+    searchFilm(){
+      this.inputOnSearch='';
+
       this.$emit('searchForMovie', this.inputOnSearch)
-      console.log('parametro funct',text);
-      console.log('input',this.inputOnSearch);
+      //console.log('input',this.inputOnSearch);
+
     }
   },
 }

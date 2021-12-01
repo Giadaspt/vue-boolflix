@@ -2,7 +2,8 @@
   <div class="container-fluid">
     <Header
     @searchForMovie="getApi"/>
-    <Main/>
+    <Main
+    :filmDetails="response"/>
     
   </div>
 </template>
@@ -21,18 +22,22 @@ export default {
 
   data(){
     return {
-      initURL: "https://api.themoviedb.org/3/movie/550?api_key=e7257db464e5496213805673eeca26f6&query=",
+      initURL: "https://api.themoviedb.org/3/movie/550?api_key=e7257db464e5496213805673eeca26f6&query",
       response: {},
     }
   },
 
   methods:{
 
-    getApi(title){
-      axios.get(`${this.initURL}${title}`)
+    getApi(title, original_title, original_language, vote_average){
+      axios.get(`${this.initURL}${title}${original_title}${original_language}${vote_average}`)
       .then(r =>{
-          console.log('io sono r',r);
-        })
+        //console.log('io sono r',r);
+        this.response = r.data;
+        //console.log('response', this.response);
+      }).catch(e =>{
+        console.log('errore',e);
+      })
     }
 
   }
