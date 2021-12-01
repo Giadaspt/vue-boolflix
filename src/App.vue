@@ -1,6 +1,7 @@
 <template>
   <div class="container-fluid">
-    <Header/>
+    <Header
+    @searchForMovie="getApi"/>
     <Main/>
     
   </div>
@@ -15,7 +16,20 @@ export default {
   components: {
     Header,
     Main,
+  },
+
+  data(){
+    return {
+      initURL: "https://api.themoviedb.org/3/movie/550",
+    }
+  },
+
+  methods:{
+    getApi(){
+
+    }
   }
+
 }
 </script>
 

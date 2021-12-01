@@ -2,8 +2,18 @@
   <header d-flex justify-content-between align-items-center>
     <h2>{{boolflix}}</h2>
     <div class="input-group inputFilm">
-      <input type="text" class="form-control" placeholder="Cerca un film" >
-      <button class="btn " type="button"> {{btn_cerca}}</button>
+      <input 
+        v-model="inputOnSearch"
+        type="text" 
+        class="form-control" 
+        placeholder="Cerca un film" >
+
+      <button 
+        @click="searchFilm"
+        class="btn " 
+        type="button"> 
+        {{btn_cerca}}
+      </button>
     </div>
 
   </header>
@@ -16,9 +26,19 @@ export default {
   data(){
     return {
       boolflix: "boolflix",
-      btn_cerca: "cerca"
+      btn_cerca: "cerca",
+
+      inputOnSearch: "",
     }
-  }
+  },
+
+  methods:{
+    searchFilm(text){
+      this.$emit('searchForMovie', this.inputOnSearch)
+      console.log('parametro funct',text);
+      console.log('input',this.inputOnSearch);
+    }
+  },
 }
 </script>
 
