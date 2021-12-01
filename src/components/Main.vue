@@ -1,12 +1,12 @@
 <template>
   <main class="row justify-content-center">
     <Film
-    v-for="(film, index) in filmDetails" 
+    v-for="(film, index) in filmFiltered " 
     :key="index"
-    :title="filmDetails.title"
-    :titleOriginal="filmDetails.original_title"
-    :lang="filmDetails.original_language"
-    :vote="filmDetails.vote_average"
+    :title="film.title"
+    :titleOriginal="film.original_title"
+    :lang="film.original_language"
+    :vote="film.vote_average"
     />
   </main>
 </template>
@@ -22,12 +22,13 @@ export default {
   },
 
   props:{
-    filmDetails: Object,
+    filmDetails: Array,
   },
 
   data(){
     return {
       textInput: '',
+      films: [],
     }
   },
 
@@ -35,10 +36,27 @@ export default {
     filmFiltered(){
 
       this.filmDetails.filter(film =>{
-        console.log('film',film);
+        //console.log('film',film);
+        //console.log(film.title);
+       this.films=[
+         film.title,
+         film.original_title,
+         film.original_language ,
+         film.vote_average ,
+       ]
+       console.log('films', this.films);
+       
+         
       })
-      console.log('film det', this.filmDetails);
-      return ''
+      return this.filmDetails
+    }
+  },
+
+  methods:{
+    getFilmsIndex(index){
+      this.indexFilm = index
+      console.log(this.indexFilm);
+      console.log(index);
     }
   },
 

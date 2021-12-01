@@ -3,7 +3,7 @@
     <Header
     @searchForMovie="getApi"/>
     <Main
-    :filmDetails="response.results"/>
+    :filmDetails="response"/>
     
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
   data(){
     return {
       initURL : "https://api.themoviedb.org/3/search/movie?api_key=e7257db464e5496213805673eeca26f6&query=",
-      response: {},
+      response: [],
     }
   },
 

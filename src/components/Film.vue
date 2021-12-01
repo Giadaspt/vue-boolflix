@@ -2,8 +2,8 @@
   <div class="film">
     <h5>{{title}}</h5>
     <h6>{{titleOriginal}}</h6>
-    <h6>{{lang}}</h6>
-    <h6>{{vote}}</h6>
+    <h6>Lingua: {{lang}}</h6>
+    <h6>Voto {{vote}}</h6>
   </div>
 </template>
 
