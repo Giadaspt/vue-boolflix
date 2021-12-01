@@ -1,7 +1,7 @@
 <template>
   <main class="row justify-content-center">
     <Film
-    v-for="(film, index) in filmFiltered" 
+    v-for="(film, index) in filmDetails" 
     :key="index"
     :title="filmDetails.title"
     :titleOriginal="filmDetails.original_title"
@@ -34,14 +34,11 @@ export default {
   computed:{
     filmFiltered(){
 
-      this.filmDetails.forEach(film =>{
-
-        film.title.includes(this.textInput) 
-        film.original_title.includes(this.textInput) 
-        film.original_language.includes(this.textInput) 
-        film.vote_average.includes(this.textInput)
-        return ''
+      this.filmDetails.filter(film =>{
+        console.log('film',film);
       })
+      console.log('film det', this.filmDetails);
+      return ''
     }
   },
 
