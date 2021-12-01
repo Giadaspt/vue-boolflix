@@ -3,6 +3,7 @@
     <h2>{{boolflix}}</h2>
     <div class="input-group inputFilm">
       <input 
+        @keyup.13="searchFilm"
         v-model="inputOnSearch"
         type="text" 
         class="form-control" 
