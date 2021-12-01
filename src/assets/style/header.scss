@@ -1,0 +1,23 @@
+
+header {
+  @include center ('align');
+  @include between;
+  height: 80px;
+  background-color: $blackColor;
+  padding: 0 24px;
+}
+
+h2 {
+  color: $redColor;
+  text-transform: uppercase;
+}
+
+.inputFilm {
+  width: 400px;
+
+  .btn {
+    text-transform: capitalize;
+    color: $whiteColor;
+    background-color: $redColor;
+  }
+}
