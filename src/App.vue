@@ -2,10 +2,10 @@
   <div class="container-fluid">
     <Header
     @searchForMovie="callApi"
-    @searchForSeries="callApiSeries"/>
+    @searchForSeries="callApi"/>
     <Main
-    :seriesDetails="response"
-    :filmDetails="response"/>
+    :seriesDetails="responseSeries"
+    :filmDetails="responseMovies"/>
     
   </div>
 </template>
@@ -30,7 +30,8 @@ export default {
         api_key: 'e7257db464e5496213805673eeca26f6',
         query:'',
       },
-      response: [],
+      responseMovies: [],
+      responseSeries: [],
     }
   },
 
@@ -41,12 +42,11 @@ export default {
       axios.get(this.initURLMovie, {params: this.urlParams})
       .then(r =>{
         //console.log('io sono r',r);
-        this.response = r.data.results;
-        console.log('response', this.response);
+        this.responseMovies = r.data.results;
+        console.log('response movie', this.responseMovies);
       }).catch(e =>{
         console.log('errore',e);
-      })
-  
+      });
     },
 
     getApiSeries(){
@@ -54,11 +54,11 @@ export default {
       axios.get(this.initURLSeries, {params: this.urlParams})
       .then(r =>{
         //console.log('io sono r',r);
-        this.response = r.data.results;
-        console.log('response series', this.response);
+        this.responseSeries = r.data.results;
+        console.log('response series serie', this.responseSeries);
       }).catch(e =>{
         console.log('errore',e);
-      })
+      });
   
     },
 
@@ -68,19 +68,11 @@ export default {
       console.log(this.urlParams.query);
 
       this.getApiMovie();
-      console.log('movie api', this.getApiMovie());
-    },
-
-    callApiSeries(text){
-      this.urlParams.query = text;
-      console.log(text);
-      console.log(this.urlParams.query);
-     
       this.getApiSeries();
-      console.log('series api', this.getApiSeries());
 
+      // console.log('movie api', this.getApiMovie());
+      // console.log('series api', this.getApiSeries());
     },
-
 
   }
 

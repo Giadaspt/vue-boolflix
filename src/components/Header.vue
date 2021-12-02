@@ -35,7 +35,8 @@ export default {
 
   methods:{
     searchFilm(){
-      this.$emit('searchForMovie' && 'searchForSeries', this.inputOnSearch)
+      this.$emit('searchForMovie', this.inputOnSearch);
+      this.$emit('searchForSeries', this.inputOnSearch);
       console.log('input',this.inputOnSearch);
       //this.inputOnSearch='';
     },

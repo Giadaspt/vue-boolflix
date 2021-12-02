@@ -1,14 +1,14 @@
 <template>
   <div class="series">
-    <h5>{{title2}}</h5>
-    <h6>{{titleOriginal2}}</h6>
+    <h5>{{name}}</h5>
+    <h6>{{titleOriginal}}</h6>
     <img 
       v-if="image == getFlag() && gotNoFlag() !== image"
-      :src="getFlag()" :alt="title">
+      :src="getFlag()" :alt="name">
     <h6 v-if="gotNoFlag() == image"> 
-        Lingua: {{lang2}}
+        Lingua: {{lang}}
     </h6>
-    <h6>Voto {{vote2}}</h6>
+    <h6>Voto {{vote}}</h6>
   </div>
 </template>
 
@@ -16,25 +16,25 @@
 export default {
   name: "Series",
   props:{
-    title2: String,
-    titleOriginal2: String,
-    lang2: String,
-    vote2: Number,
-    id2: String,
+    name: String,
+    titleOriginal: String,
+    lang: String,
+    vote: Number,
+    id: String,
   },
 
   data(){
     return {
-      image: this.lang2,
+      image: this.lang,
     }
   },
 
   methods:{
    getFlag(){
       
-      if (this.lang2 == 'en'){
+      if (this.lang == 'en'){
         this.image = require('../assets/img/en.png');
-      } else if (this.lang2 == 'it'){
+      } else if (this.lang == 'it'){
         this.image = require('../assets/img/it.png');
       } 
       return this.image
@@ -42,7 +42,7 @@ export default {
 
     gotNoFlag(){
       if (this.image !== 'en' || this.image !== 'it'){
-        return this.lang2
+        return this.lang
       } 
     },
   },

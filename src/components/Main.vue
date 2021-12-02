@@ -18,10 +18,10 @@
     <Series
     v-for="serie in seriesDetails " 
     :key="serie.id2"
-    :title2="serie.title"
-    :titleOriginal2="serie.original_title"
-    :lang2="serie.original_language"
-    :vote2="serie.vote_average"
+    :name="serie.name"
+    :titleOriginal="serie.original_title"
+    :lang="serie.original_language"
+    :vote="serie.vote_average"
     />
     </div>
 
