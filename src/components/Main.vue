@@ -1,20 +1,28 @@
 <template>
-  <main >
-    <div class="row justify-content-center">
+  <main class="container  justify-content-center">
+    <div class="row d-flex justify-content-center">
     <h3>Film</h3>    
     <Film
-    v-for="(film, index) in filmDetails " 
-    :key="index"
+    v-for="film in filmDetails " 
+    :key="film.id"
     :title="film.title"
     :titleOriginal="film.original_title"
     :lang="film.original_language"
-    :backimage="film.backdrop_path"
+
     :vote="film.vote_average"
     />
     </div>
-    <div class="row justify-content-center">
+
+    <div class="row d-flex justify-content-center">
     <h3>Series</h3>    
-    <Series/>
+    <Series
+    v-for="serie in seriesDetails " 
+    :key="serie.id2"
+    :title2="serie.title"
+    :titleOriginal2="serie.original_title"
+    :lang2="serie.original_language"
+    :vote2="serie.vote_average"
+    />
     </div>
 
   </main>
@@ -34,12 +42,12 @@ export default {
 
   props:{
     filmDetails: Array,
+    seriesDetails: Array,
   },
 
   data(){
     return {
       textInput: '',
-      films: [],
     }
   },
 
@@ -47,11 +55,7 @@ export default {
   },
 
   methods:{
-    getFilmsIndex(index){
-      this.indexFilm = index
-      console.log(this.indexFilm);
-      console.log(index);
-    }
+
   },
 
 

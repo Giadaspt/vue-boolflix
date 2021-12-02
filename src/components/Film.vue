@@ -22,6 +22,7 @@ export default {
     titleOriginal: String,
     lang: String,
     vote: Number,
+    id: String,
   },
 
   data(){
@@ -38,9 +39,6 @@ export default {
       } else if (this.lang == 'it'){
         this.image = require('../assets/img/it.png');
       } 
-      // else if (this.lang !== 'en' && this.lang !== 'it'){
-      //   this.lang = ''
-      // } 
       return this.image
     },
 
@@ -56,7 +54,7 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/style/vars.scss";
 @import "../assets/style/mixins.scss";
-@import "../assets/style/film.scss";
+@import "../assets/style/film_series.scss";
 
 
 </style>

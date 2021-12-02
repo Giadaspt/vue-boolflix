@@ -1,8 +1,10 @@
 <template>
   <div class="container-fluid">
     <Header
-    @searchForMovie="callApi"/>
+    @searchForMovie="callApi"
+    @searchForSeries="callApiSeries"/>
     <Main
+    :seriesDetails="response"
     :filmDetails="response"/>
     
   </div>
@@ -23,20 +25,20 @@ export default {
   data(){
     return {
       initURLMovie : "https://api.themoviedb.org/3/search/movie",
+      initURLSeries : "https://api.themoviedb.org/3/search/tv",
       urlParams: {
         api_key: 'e7257db464e5496213805673eeca26f6',
         query:'',
       },
-      initURLSeries : "https://api.themoviedb.org/3/search/tv",
       response: [],
     }
   },
 
   methods:{
 
-    getApi(){
+    getApiMovie(){
       
-      axios.get(this.initURLMovie || this.initURLSeries, {params: this.urlParams})
+      axios.get(this.initURLMovie, {params: this.urlParams})
       .then(r =>{
         //console.log('io sono r',r);
         this.response = r.data.results;
@@ -47,12 +49,36 @@ export default {
   
     },
 
-    callApi(title){
-      this.urlParams.query = title;
-      console.log(title);
+    getApiSeries(){
+      
+      axios.get(this.initURLSeries, {params: this.urlParams})
+      .then(r =>{
+        //console.log('io sono r',r);
+        this.response = r.data.results;
+        console.log('response series', this.response);
+      }).catch(e =>{
+        console.log('errore',e);
+      })
+  
+    },
+
+    callApi(text){
+      this.urlParams.query = text;
+      console.log(text);
       console.log(this.urlParams.query);
 
-      this.getApi();
+      this.getApiMovie();
+      console.log('movie api', this.getApiMovie());
+    },
+
+    callApiSeries(text){
+      this.urlParams.query = text;
+      console.log(text);
+      console.log(this.urlParams.query);
+     
+      this.getApiSeries();
+      console.log('series api', this.getApiSeries());
+
     },
 
 

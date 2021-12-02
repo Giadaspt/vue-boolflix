@@ -35,12 +35,16 @@ export default {
 
   methods:{
     searchFilm(){
-      
-      this.$emit('searchForMovie', this.inputOnSearch)
+      this.$emit('searchForMovie' && 'searchForSeries', this.inputOnSearch)
       console.log('input',this.inputOnSearch);
       //this.inputOnSearch='';
+    },
 
-    }
+    // searchSeries (){
+    //   this.$emit('searchForSeries', this.inputOnSearch)
+    //   console.log('input',this.inputOnSearch);
+    //   //this.inputOnSearch='';
+    // }
   },
 }
 </script>
