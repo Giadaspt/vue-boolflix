@@ -51,37 +51,8 @@ export default {
       }).catch(e => {
         console.log(e);
       })
-
-      // axios.all([callMovie, callSeries])
-      // .then(axios.spread(responseOne, responseTwo => {
-      //   const resp = responseOne.data.results;
-      //   const respSec = responseTwo.data.results;
-      // }))
       
     },
-    // getApiSMovie(){
-      // axios.get(this.initURLMovie, {params: this.urlParams})
-      // .then(r =>{
-      //   //console.log('io sono r',r);
-      //   this.responseMovies = r.data.results;
-      //   console.log('response movie', this.responseMovies);
-      // }).catch(e =>{
-      //   console.log('errore',e);
-      // });
-    
-
-    // getApiSeries(){
-      
-    //   axios.get(this.initURLSeries, {params: this.urlParams})
-    //   .then(r =>{
-    //     //console.log('io sono r',r);
-    //     this.responseSeries = r.data.results;
-    //     console.log('response series serie', this.responseSeries);
-    //   }).catch(e =>{
-    //     console.log('errore',e);
-    //   });
-  
-    // },
 
     callApi(text){
       this.urlParams.query = text;
@@ -89,12 +60,7 @@ export default {
       //console.log(this.urlParams.query);
 
       this.getApi();
-      // this.getApiSeries();
-
-      // console.log('movie api', this.getApiMovie());
-      // console.log('series api', this.getApiSeries());
     },
-
 
   }
 
