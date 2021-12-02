@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <Header
-    @searchForMovie="getApi"/>
+    @searchForMovie="callApi"/>
     <Main
     :filmDetails="response"/>
     
@@ -22,23 +22,21 @@ export default {
 
   data(){
     return {
-      initURL : "https://api.themoviedb.org/3/search/movie?api_key=e7257db464e5496213805673eeca26f6&query=",
+      initURLMovie : "https://api.themoviedb.org/3/search/movie",
+      urlParams: {
+        api_key: 'e7257db464e5496213805673eeca26f6',
+        query:'',
+      },
+      initURLSeries : "https://api.themoviedb.org/3/search/tv",
       response: [],
     }
   },
 
   methods:{
 
-    getApi(title){
-
-      // movie -> https://api.themoviedb.org/3/search/movie?api_key=CHIAVE_TUA&query=TITOLO'
-      // serie tv -> https://api.themoviedb.org/3/search/tv?api_key=CHIAVE_TUA&query=TITOLO'
+    getApi(){
       
-      const queryChiamata = `${this.initURL}${title}`;
-
-      console.log('query', queryChiamata);
-
-      axios.get(queryChiamata)
+      axios.get(this.initURLMovie || this.initURLSeries, {params: this.urlParams})
       .then(r =>{
         //console.log('io sono r',r);
         this.response = r.data.results;
@@ -46,16 +44,17 @@ export default {
       }).catch(e =>{
         console.log('errore',e);
       })
+  
+    },
 
-      // axios.get(`${this.initURL}${title}`)
-      // .then(r =>{
-      //   //console.log('io sono r',r);
-      //   this.response = r.data;
-      //   console.log('response', this.response);
-      // }).catch(e =>{
-      //   console.log('errore',e);
-      // })      
-    }
+    callApi(title){
+      this.urlParams.query = title;
+      console.log(title);
+      console.log(this.urlParams.query);
+
+      this.getApi();
+    },
+
 
   }
 

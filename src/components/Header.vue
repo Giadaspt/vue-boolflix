@@ -7,7 +7,7 @@
         v-model="inputOnSearch"
         type="text" 
         class="form-control" 
-        placeholder="Cerca un film" >
+        placeholder="Cosa vuoi vedere?" >
 
       <button 
         @click="searchFilm"

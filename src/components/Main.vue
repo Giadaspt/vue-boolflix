@@ -1,24 +1,35 @@
 <template>
-  <main class="row justify-content-center">
+  <main >
+    <div class="row justify-content-center">
+    <h3>Film</h3>    
     <Film
-    v-for="(film, index) in filmFiltered " 
+    v-for="(film, index) in filmDetails " 
     :key="index"
     :title="film.title"
     :titleOriginal="film.original_title"
     :lang="film.original_language"
+    :backimage="film.backdrop_path"
     :vote="film.vote_average"
     />
+    </div>
+    <div class="row justify-content-center">
+    <h3>Series</h3>    
+    <Series/>
+    </div>
+
   </main>
 </template>
 
 <script>
 import Film from "./Film.vue"
+import Series from "./Series.vue"
 
 export default {
   name: "Main",
 
   components:{
     Film,
+    Series,
   },
 
   props:{
@@ -33,23 +44,6 @@ export default {
   },
 
   computed:{
-    filmFiltered(){
-
-      this.filmDetails.filter(film =>{
-        //console.log('film',film);
-        //console.log(film.title);
-       this.films=[
-         film.title,
-         film.original_title,
-         film.original_language ,
-         film.vote_average ,
-       ]
-       console.log('films', this.films);
-       
-         
-      })
-      return this.filmDetails
-    }
   },
 
   methods:{
