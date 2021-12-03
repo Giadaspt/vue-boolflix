@@ -2,10 +2,12 @@
   <div class="container-fluid">
     <Header
     @searchForMovie="callApi"
-    @searchForSeries="callApi"/>
+    @searchForSeries="callApi"
+    />
     <Main
+    :filmDetails="callMovies"
     :seriesDetails="callSeries"
-    :filmDetails="callMovies"/>
+    />
     
   </div>
 </template>
@@ -41,6 +43,7 @@ export default {
 
       let callMovie = axios.get(this.apiOne, {params: this.urlParams});
       let callSerie = axios.get(this.apiTwo, {params: this.urlParams});
+      
       console.log(callMovie);
       console.log(callSerie);
 
