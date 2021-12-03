@@ -1,8 +1,4 @@
-.film, .series {
-  background-color: $redColor;
-  padding: 12px;
-  margin: 12px 0;
-}
+
 
 .overview {
   font-size: 11px;
@@ -10,6 +6,9 @@
   text-overflow: ellipsis;
 }
 
+.fas , .far {
+  color: $yellowColor;
+}
 
 .flag {
   text-align: center;
@@ -19,10 +18,12 @@
 }
 
 .flip-card {
-  background-color: transparent;
   width: 230px;
-  height: 300px;
-  border: 1px solid white;
+  height: 325px;
+}
+ img {
+  width: 100%;
+  height: 100%;
 }
 
 .flip-card-inner {
@@ -45,10 +46,11 @@
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  border: 1px solid white;
 }
 
 .flip-card-back {
-  height: 300px;
+  height: 325px;
   background-color: $blackColor;
   color: $whiteColor;
   padding: 14px;

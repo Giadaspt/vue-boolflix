@@ -1,6 +1,10 @@
 @import "~bootstrap/scss/bootstrap.scss";
-@import "~@fortawesome/fontawesome-free";
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+// @import '~country-flag-icons/flags/3x2';
 
+body {
+  background-color: $blackColor ;
+}
 
 .container-fluid{
   padding: 0 !important;

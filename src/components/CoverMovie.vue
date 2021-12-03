@@ -4,12 +4,14 @@
     <div class="flip-card film">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img :src="getPoster()" alt="">
+          <img class="cover" :src="getPoster()" @error="replace" alt="">
         </div>
 
         <div class="flip-card-back">
           <h5>{{title}}</h5>
-          <h6>{{titleOriginal}}</h6>
+          <h6 
+          v-if="titleSec !== titleOriginalSec"
+          >{{titleOriginal}}</h6>
           <img 
           class="flag"
           v-if="image == getFlag() && gotNoFlag() !== image"
@@ -53,6 +55,9 @@ export default {
       image: this.lang,
       base: 'https://image.tmdb.org/t/p/w342',
       cutText: this.overview,
+      titleSec: this.title,
+      titleOriginalSec: this.titleOriginal,
+      voted: this.vote,
     }
   },
 
@@ -77,8 +82,13 @@ export default {
       return this.base+this.preview;
     },
 
-    stars(item) {
-      return Math.ceil(item.vote_average / 2);
+    replace(e) {
+      console.log("404");
+      e.target.src = require("../assets/img/nonecares.jpg")
+    },
+
+    stars(vote) {
+      return Math.ceil(vote.vote_average / 2);
     },
 
     textCut(){

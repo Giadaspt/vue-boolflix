@@ -13,7 +13,6 @@
     :vote="film.vote_average"
     />
     </div>
-
     <div class="row d-flex justify-content-center">
     <h3>Series</h3>    
     <CoverMovie
@@ -67,7 +66,11 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/style/vars.scss";
 @import "../assets/style/mixins.scss";
-@import "../assets/style/main.scss";
+
+.row {
+  overflow: hidden;
+  margin: 32px;
+}
 
 
 </style>
