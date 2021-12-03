@@ -6,10 +6,10 @@
         <div class="flip-card-front">
           <img :src="getPoster()" alt="">
         </div>
+
         <div class="flip-card-back">
           <h5>{{title}}</h5>
           <h6>{{titleOriginal}}</h6>
-          <p>{{overview}}</p>
           <img 
           class="flag"
           v-if="image == getFlag() && gotNoFlag() !== image"
@@ -17,7 +17,15 @@
           <h6 v-if="gotNoFlag() == image"> 
             Lingua: {{lang}}
           </h6>
-          <h6>Voto {{vote}}</h6>
+
+          <div>
+            <i 
+            v-for="i in 5" :key="i" 
+            :class="i < stars(vote) ? 'fas fa-star' : 'far fa-star'"></i>
+          </div>
+
+           <p class="overview">{{textCut(overview)}}...</p>
+
         </div>
       </div>
     </div>
@@ -44,6 +52,7 @@ export default {
     return {
       image: this.lang,
       base: 'https://image.tmdb.org/t/p/w342',
+      cutText: this.overview,
     }
   },
 
@@ -68,9 +77,13 @@ export default {
       return this.base+this.preview;
     },
 
-    starCount(item) {
+    stars(item) {
       return Math.ceil(item.vote_average / 2);
     },
+
+    textCut(){
+      return this.cutText.slice(0,220)
+    }
   },
 }
 </script>

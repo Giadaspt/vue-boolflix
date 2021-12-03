@@ -4,8 +4,10 @@
   margin: 12px 0;
 }
 
-p {
+.overview {
   font-size: 11px;
+  width: 180px;
+  text-overflow: ellipsis;
 }
 
 
@@ -51,5 +53,5 @@ p {
   color: $whiteColor;
   padding: 14px;
   transform: rotateY(180deg);
-  overflow-y: auto;
+  
 }

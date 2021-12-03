@@ -19,6 +19,7 @@
     <CoverMovie
     v-for="serie in seriesDetails " 
     :key="serie.id2"
+    :toSee="serie.CoverMovie"
     :preview="serie.poster_path"
     :name="serie.name"
     :titleOriginal="serie.original_title"
