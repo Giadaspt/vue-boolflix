@@ -1,38 +1,29 @@
 <template>
-  <main class="container  justify-content-center">
-    <div class="row d-flex justify-content-center">
-    <h3>Film</h3>    
-    <CoverMovie
-    v-for="film in filmDetails " 
-    :key="film.id"
-    :preview="film.poster_path"
-    :title="film.title"
-    :titleOriginal="film.original_title"
-    :overview="film.overview"
-    :lang="film.original_language"
-    :vote="film.vote_average"
-    />
-    </div>
-    <div class="row d-flex justify-content-center">
-    <h3>Series</h3>    
-    <CoverMovie
-    v-for="serie in seriesDetails " 
-    :key="serie.id2"
-    :toSee="serie.CoverMovie"
-    :preview="serie.poster_path"
-    :name="serie.name"
-    :titleOriginal="serie.original_title"
-    :overview="serie.overview"
-    :lang="serie.original_language"
-    :vote="serie.vote_average"
-    />
+  <main class="container ">
+    
+    <div class="row  movie">
+      <h3 class="title">Film</h3>    
+      <CoverMovie
+      v-for="(film, index) in filmDetails " 
+      :key="`film${index}`"
+      :objItems = "film"
+      
+      />
     </div>
 
+    <div class="row series">
+      <h3 class="title">Series</h3>    
+      <CoverMovie
+      v-for="(serie, index) in seriesDetails " 
+      :key="`serie${index}`"
+      :objItems = "serie"
+      />
+    </div>
   </main>
 </template>
 
 <script>
-import CoverMovie from "./CoverMovie.vue"
+import CoverMovie from "./CoverMovie.vue";
 
 export default {
   name: "Main",
@@ -47,19 +38,6 @@ export default {
     seriesDetails: Array,
   },
 
-  data(){
-    return {
-      textInput: '',
-    }
-  },
-
-  computed:{
-  },
-
-  methods:{
-
-  },
-
 }
 </script>
 
@@ -67,9 +45,12 @@ export default {
 @import "../assets/style/vars.scss";
 @import "../assets/style/mixins.scss";
 
-.row {
-  overflow: hidden;
-  margin: 32px;
+.movie, .series {
+  background-color: red;
+}
+
+.title {
+  margin: 32px 0;
 }
 
 

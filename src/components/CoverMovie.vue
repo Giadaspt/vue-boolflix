@@ -1,32 +1,34 @@
 <template>
-  <div class="col d-flex justify-content-center flex-wrap" >
+  <div class="col" >
 
-    <div class="flip-card film">
+    <div class="flip-card ">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img class="cover" :src="getPoster()" @error="replace" alt="">
         </div>
-
+        
         <div class="flip-card-back">
-          <h5>{{title}}</h5>
+          <h5>{{objItems.title}}</h5>
           <h6 
-          v-if="titleSec !== titleOriginalSec"
-          >{{titleOriginal}}</h6>
+            v-if="titleSec !== titleOriginalSec">
+            {{objItems.titleOriginal}}
+          </h6>
           <img 
           class="flag"
           v-if="image == getFlag() && gotNoFlag() !== image"
-          :src="getFlag()" :alt="title">
+          :src="getFlag()" :alt="objItems.title">
           <h6 v-if="gotNoFlag() == image"> 
-            Lingua: {{lang}}
+            Lingua: {{objItems.original_language}}
           </h6>
 
           <div>
-            <i 
-            v-for="i in 5" :key="i" 
-            :class="i < stars(vote) ? 'fas fa-star' : 'far fa-star'"></i>
+            <i
+              v-for="(i, index) in 5" :key="`full${index}`"
+              :class="i < stars(objItems.vote_average) ? 'fas fa-star' : 'far fa-star' ">
+            </i>
           </div>
 
-           <p class="overview">{{textCut(overview)}}...</p>
+           <p class="overview">{{textCut(objItems.overview)}}...</p>
 
         </div>
       </div>
@@ -40,33 +42,24 @@
 export default {
   name: "CoverMovie",
 
-  props:{
-    title: String,
-    titleOriginal: String,
-    lang: String,
-    vote: Number,
-    id: Number,
-    overview: String,
-    preview: String,
-  },
+  props:['objItems'],
 
   data(){
     return {
-      image: this.lang,
+      image: this.objItems.original_language,
       base: 'https://image.tmdb.org/t/p/w342',
-      cutText: this.overview,
-      titleSec: this.title,
-      titleOriginalSec: this.titleOriginal,
-      voted: this.vote,
+      cutText: this.objItems.overview,
+      titleSec: this.objItems.title,
+      titleOriginalSec: this.objItems.titleOriginal,
     }
   },
 
   methods:{
    getFlag(){
       
-      if (this.lang == 'en'){
+      if (this.objItems.original_language == 'en'){
         this.image = require('../assets/img/en.png');
-      } else if (this.lang == 'it'){
+      } else if (this.objItems.original_language == 'it'){
         this.image = require('../assets/img/it.png');
       } 
       return this.image
@@ -74,21 +67,23 @@ export default {
 
     gotNoFlag(){
       if (this.image !== 'en' || this.image !== 'it'){
-        return this.lang
+        return this.objItems.original_language
       }
     },
 
     getPoster() {
-      return this.base+this.preview;
+      return this.base+this.objItems.poster_path;
     },
 
     replace(e) {
-      console.log("404");
+      //console.log("404");
       e.target.src = require("../assets/img/nonecares.jpg")
     },
 
-    stars(vote) {
-      return Math.ceil(vote.vote_average / 2);
+    stars() {
+     let voted = this.objItems.vote_average;
+      const count = Math.ceil(voted / 2);
+      return count
     },
 
     textCut(){

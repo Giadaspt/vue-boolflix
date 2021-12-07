@@ -37,9 +37,7 @@ export default {
     }
   },
 
-  mounted:{
-    //qui la chiamata per i piu popolari
-  },
+
 
   methods:{
 
