@@ -1,0 +1,29 @@
+.movie, .series {
+  position: relative;
+  display: flex;
+  flex-basis: 80%;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.title {
+  display: block;
+  margin: 32px 0;
+}
+
+.leftChev, .rightChev {
+  @include center ('both');
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  background-color: $whiteColorShade;
+  border-radius: 50%;
+}
+.leftChev {
+  left: 0;
+}
+
+.rightChev {
+ right: 0px;
+}

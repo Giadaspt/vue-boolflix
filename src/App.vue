@@ -4,11 +4,13 @@
     @searchForMovie="callApi"
     @searchForSeries="callApi"
     />
+   
     <Main
-    :filmDetails="callMovies"
-    :seriesDetails="callSeries"
+      :filmDetails="callMovies"
+      :seriesDetails="callSeries"
     />
-    
+
+
   </div>
 </template>
 
@@ -16,6 +18,7 @@
 import Header from "./components/Header.vue";
 import Main from "./components/Main.vue";
 import axios from "axios";
+
 
 export default {
   name: 'App',
@@ -37,8 +40,6 @@ export default {
     }
   },
 
-
-
   methods:{
 
     getApi(){
@@ -46,8 +47,8 @@ export default {
       let callMovie = axios.get(this.apiOne, {params: this.urlParams});
       let callSerie = axios.get(this.apiTwo, {params: this.urlParams});
       
-      console.log(callMovie);
-      console.log(callSerie);
+      //console.log(callMovie);
+      //console.log(callSerie);
 
       Promise.all([callMovie, callSerie])
       .then((r) => {
@@ -63,7 +64,6 @@ export default {
       this.urlParams.query = text;
       //console.log(text);
       //console.log(this.urlParams.query);
-
       this.getApi();
     },
 

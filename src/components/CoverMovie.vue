@@ -1,14 +1,15 @@
 <template>
-  <div class="col" >
+  <div class="col d-flex flex-row" >
 
     <div class="flip-card ">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img class="cover" :src="getPoster()" @error="replace" alt="">
         </div>
-        
+
         <div class="flip-card-back">
-          <h5>{{objItems.title}}</h5>
+          <h5>{{objItems.title}} </h5>
+          <h5>{{objItems.name}} </h5>
           <h6 
             v-if="titleSec !== titleOriginalSec">
             {{objItems.titleOriginal}}
@@ -55,8 +56,8 @@ export default {
   },
 
   methods:{
-   getFlag(){
-      
+
+    getFlag(){
       if (this.objItems.original_language == 'en'){
         this.image = require('../assets/img/en.png');
       } else if (this.objItems.original_language == 'it'){
@@ -87,7 +88,7 @@ export default {
     },
 
     textCut(){
-      return this.cutText.slice(0,220)
+      return this.cutText.slice(0,300)
     }
   },
 }
