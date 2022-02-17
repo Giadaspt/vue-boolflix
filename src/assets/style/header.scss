@@ -1,10 +1,10 @@
 
-header {
+head {
   @include center ('align');
   @include between;
-  height: 80px;
   background-color: $blackColor;
   padding: 0 24px;
+  
 }
 
 h2 {
@@ -21,3 +21,38 @@ h2 {
     background-color: $redColor;
   }
 }
+
+ 
+.jumbotron {
+
+  width: 100%;
+  margin-top: 32px;
+   img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     opacity: .3;
+   }
+   
+  }
+  .trama {
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    width: 40%;
+    color: $whiteColor;
+
+    h5 {
+      line-height: 32px;
+    }
+
+    button {
+      color: $whiteColor;
+      background-color: $redColor;
+      border: none;
+      border-radius: 10px;
+      margin-right: 24px;
+      margin-top: 24px;
+      padding: 8px;
+    }
+  }

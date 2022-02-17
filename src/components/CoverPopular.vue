@@ -46,7 +46,7 @@
 
 
     <!-- Modal -->
-    <section class="contain transition" >
+    <section class="contain " >
       <div class="col modalMovie" v-if="toggleModal">
         <div class="box">
           <div class="leftModal">
@@ -99,7 +99,7 @@
 <script>
 
 export default {
-  name: "CoverMovie",
+  name: "CoverPopular",
 
   props:['objItems'],
 
